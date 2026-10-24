@@ -1,0 +1,10 @@
+Ma, a botanical concept by XI.
+
+The MIT License in LICENSE covers the code: the HTML, CSS, JavaScript and build.py.
+
+It does not cover the images in assets/images or the page's words. They stay XI's,
+all rights reserved: replace them with your own.
+
+The fonts in assets/fonts (Newsreader, Noto Serif JP, Waiting for the Sunrise) are
+under the SIL Open Font License, and Lenis in js/vendor under the MIT License.
+Their licences are in licenses/.

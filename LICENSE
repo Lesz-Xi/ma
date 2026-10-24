@@ -20,9 +20,3 @@ LIABILITY, WHETHER IN AN ACTION OF CONTRACT, TORT OR OTHERWISE, ARISING FROM,
 OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE
 SOFTWARE.
 
----
-
-Scope: this licence covers the code (HTML, CSS, JavaScript and build.py).
-It does not cover the images in assets/images or the page's words, which stay
-XI's: replace them with your own. The fonts in assets/fonts and Lenis in
-js/vendor keep their own licences, in licenses/.
