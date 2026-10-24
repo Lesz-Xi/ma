@@ -1,0 +1,44 @@
+/* One still reading column; three material studies in ordinary document flow. */
+.ch02{padding:18vh 5vw 16vh max(var(--rail),5vw)}
+.ch02-grid{display:grid;grid-template-columns:minmax(340px,.9fr) minmax(0,1.5fr);gap:clamp(48px,6vw,100px);align-items:start;max-width:1500px;margin:auto}
+.ch02-text{position:sticky;top:23vh;padding-bottom:32px}
+.ch02-title{font-size:clamp(38px,3.8vw,56px);margin:24px 0 30px}
+.ch02-sub{margin:0 0 22px}
+.ch02-after{margin:0 0 42px}
+#ma-main .ch02-link{justify-content:flex-start;padding:12px 4px 16px;font:italic 400 clamp(20px,1.6vw,23px)/1.3 var(--font-control)}
+.ch02-studies{position:relative;padding:22px;isolation:isolate}
+.ch02-study{position:relative;margin:0;max-width:100%}
+.ch02-study--line{width:84%;margin-left:auto}
+.ch02-study--space{width:70%;margin-top:9vh}
+.ch02-study--balance{width:78%;margin:10vh 0 0 auto}
+.ch02-image{position:relative;aspect-ratio:5/4}
+.ch02-image img{display:block;width:100%;height:100%;object-fit:cover}
+.ch02-study--space .ch02-image{aspect-ratio:6/5}
+.ch02-study figcaption{position:relative;z-index:2;display:flex;justify-content:space-between;gap:14px;align-items:baseline;margin-top:24px;color:var(--ink-dim)}
+.ch02-study figcaption span:first-child{font-family:var(--font-display);font-size:23px;color:var(--ink)}
+.ch02-material-canvas{position:absolute;inset:0;z-index:1;width:100%;height:100%;pointer-events:none}
+.ch02-studies.is-material-active .ch02-image img{opacity:0}
+@media(max-width:899px){
+ .ch02{padding:12vh 18px 10vh}
+ .ch02-grid{grid-template-columns:1fr;gap:40px}
+ .ch02-text{position:static;max-width:540px;padding-bottom:0}
+ .ch02-title{font-size:clamp(38px,8.8vw,64px)}
+ .ch02-studies{padding:0}
+ .ch02-study--line,.ch02-study--space,.ch02-study--balance{width:100%;margin:0 0 48px}
+ .ch02-study figcaption{margin-top:15px}
+ .ch02-study figcaption span:first-child{font-size:24px}
+}
+@media(prefers-reduced-motion:reduce){.ch02-text{position:static}}
+/* Enhanced shared study stage. Without capability, all three figures stay in flow. */
+@media(min-width:900px) and (hover:hover) and (pointer:fine){
+ .ch02.has-image-lens{height:420vh;padding-top:18vh;padding-bottom:18vh}
+ .ch02.has-image-lens .ch02-grid{position:sticky;top:18vh;align-items:start}
+ .ch02.has-image-lens .ch02-text{position:relative;top:auto}
+ .ch02-studies.is-lens-ready{padding:0;aspect-ratio:5/4;width:100%;max-height:58vh;margin-bottom:74px}
+ .ch02-studies.is-lens-ready .ch02-study{position:absolute;inset:0;width:100%;margin:0;opacity:0;pointer-events:none}
+ .ch02-studies.is-lens-ready .ch02-study.is-current{opacity:1}
+ .ch02-studies.is-lens-ready .ch02-image{height:100%;aspect-ratio:auto}
+ .ch02-studies.is-lens-moving .ch02-image img{opacity:0}
+ .ch02-studies.is-lens-ready figcaption{margin-top:22px}
+ .ch02-lens-canvas{position:absolute;inset:0;width:100%;height:100%;pointer-events:none;z-index:1}
+}

@@ -9,26 +9,42 @@ Ma is one quiet page about removal and distance, made of paper, water and stone.
 - **Vessels.** One vessel becomes the next through a rising waterline.
 - **Close.** 間 rests above one hairline that you can pluck. It rings as water in a suikinkutsu, tuned to hirajōshi; a hairline wind bell turns the sound off.
 
-## Files
+It is plain HTML, CSS and JavaScript, with no framework and no build step to run it.
 
-| Path | What it is |
-|---|---|
-| `index.html` | The page, self-contained: open it in a browser, or serve it as is. |
-| `build.py` | Rebuilds `index.html` from `src/`. |
-| `src/edition.html` | The edition the layer builds on: chapters, type, water, header and footer. |
-| `src/pond.js`, `pond.css` | The hero: koi, grass and stones on one canvas, in washi. |
-| `src/vessels-motion.js`, `.css` | The vessels' water handoff between forms. |
-| `src/coda.js`, `.css` | The close: the line, its string and the sound. |
-| `src/ma-mark-flower.webp` | The flower that is the mark, left of "Ma". |
-| `licenses/` | Licences for the fonts and the library the page embeds. |
+## Run it
 
-## Build
+```sh
+python3 -m http.server
+```
+
+Then open http://localhost:8000. It needs a server rather than `file://`, because browsers won't load fonts from local files.
+
+## Build the single file
 
 ```sh
 python3 build.py
 ```
 
-This needs Python 3 and nothing else: no packages and no network. The output is `index.html`, one file with every image, font and script inlined.
+This writes `dist/ma.html`, the same page with every stylesheet, script, image and font inlined into one file. It is the file served at odysxi.com/ma, byte for byte. It needs Python 3 and nothing else.
+
+## Where things are
+
+| Path | What it is |
+|---|---|
+| `index.html` | The page: its markup, and the stylesheets and scripts it loads in order. |
+| `js/shell.js` | The runtime the rest shares: one frame clock, pointer, scroll, reduced motion, chapters. |
+| `js/pond.js` · `css/pond.css` | The hero: koi, grass and stones on one canvas, in washi. |
+| `js/coda.js` · `css/coda.css` | The close: the line, its damped string, and the synthesized sound. |
+| `js/vessels-motion.js` · `css/vessels-motion.css` | The vessels' water handoff between forms. |
+| `js/water/` | The water engines: arrivals, transitions, sections, text and hover. |
+| `js/page-water.js` | The wake behind the pointer and the ripple of a click, refracting the images. |
+| `js/entry-water.js` | The arrival: the flower's bloom, then the Capillary opening. |
+| `js/chapters/` · `css/chapters/` | Each chapter's own behaviour and styles. |
+| `js/edition-config.js` | The edition's settings: chapters, durations, what the water touches. |
+| `js/vendor/` | Lenis 1.3.4, for the scroll's weight. |
+| `css/fonts.css` · `css/tokens.css` | The faces and the design tokens. |
+| `assets/images/` · `assets/fonts/` | The images of each chapter, the flower mark and the fonts. |
+| `licenses/` | Licences for the fonts and Lenis. |
 
 ## On the page
 

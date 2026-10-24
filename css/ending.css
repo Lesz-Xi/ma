@@ -1,0 +1,56 @@
+/* Public-only ending. The normal document is the accessible fallback. */
+.ma-passing{padding:100px clamp(24px,6vw,96px);background:var(--ground)}
+.ma-flight-heading{text-align:center;max-width:720px;margin:0 auto 64px}
+.ma-flight-heading h2{margin:0 0 24px}
+#ma-main .ma-flight-heading p{margin:0 auto;max-width:28ch}
+.ma-flight-media{display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:48px 28px;max-width:1360px;margin:auto}
+.ma-flight-panel{margin:0;min-width:0}
+.ma-flight-panel:nth-child(3n+2){padding-top:72px}
+.ma-flight-image{position:relative;overflow:visible;aspect-ratio:4/5;background:transparent}
+.ma-flight-image img{display:block;width:100%;height:100%;object-fit:contain}
+.ma-flight-panel figcaption{margin-top:16px}
+.ma-flight-panel--small img{transform:scale(.84)}
+.ma-flight-failure{margin:28px auto}
+.ma-passing [hidden],.ma-closer [hidden]{display:none!important}
+/* Only JS may admit the long passage; CSS capability loss immediately fails open. */
+@media(min-width:1000px) and (min-height:700px) and (hover:hover) and (pointer:fine) and (prefers-reduced-motion:no-preference){
+ .ma-passing.is-flying{height:460vh;padding:0}
+ .is-flying .ma-flight-camera{position:sticky;top:0;height:100vh;overflow:clip}
+ .is-flying .ma-flight-heading{position:absolute;inset:0;display:flex;flex-direction:column;justify-content:center;align-items:center;max-width:none;margin:0;z-index:2;pointer-events:none}
+ #ma-main .is-flying h2{font-size:clamp(36px,3.7vw,58px);line-height:1.17;max-width:46vw}
+ #ma-main .is-flying .ma-flight-heading p{font-size:clamp(20px,1.65vw,24px)!important;max-width:30vw}
+ .is-flying .ma-flight-media{display:block;position:absolute;inset:0;max-width:none;perspective:100vw;pointer-events:none}
+ .is-flying .ma-flight-panel{position:absolute;top:50%;left:50%;width:21vw;padding:0;opacity:0;pointer-events:none;transform:translate(-50%,-50%) translateZ(-200vw)}
+ /* One water filter composes native text and projected RGBA objects at the
+    established .55 reading amplitude. No transformed child gets a second field. */
+ .is-flying .ma-flight-heading h2,.is-flying .ma-flight-heading p{pointer-events:auto}
+ .is-flying .ma-flight-panel figcaption{position:absolute;width:1px;height:1px;overflow:hidden;clip-path:inset(50%);white-space:nowrap}
+}
+.ma-closer{padding:clamp(88px,13vh,160px) clamp(24px,6vw,96px);background:var(--ground)}
+.ma-closer-inner{max-width:1260px;margin:auto;display:grid;grid-template-columns:minmax(260px,.85fr) minmax(0,1.15fr);gap:clamp(40px,7vw,112px);align-items:center}
+.ma-closer h2{margin:0 0 32px}
+#ma-main .ma-closer-copy p{max-width:25ch;margin:0 0 32px}
+.ma-close-figure{margin:0;min-width:0}
+.ma-close-frame{overflow:hidden;position:relative;aspect-ratio:1122/1402;max-width:580px}
+/* Match Spring's empty-edge dissolve on the stationary frame, so framing
+   cannot move the feather. The opaque centre retains native image opacity. */
+.ma-closer .ma-close-frame{
+ -webkit-mask-image:linear-gradient(to bottom,transparent 0%,var(--ink) 10%),linear-gradient(to right,transparent 0%,var(--ink) 9%,var(--ink) 91%,transparent 100%);
+ -webkit-mask-composite:source-in;
+ mask-image:linear-gradient(to bottom,transparent 0%,var(--ink) 10%),linear-gradient(to right,transparent 0%,var(--ink) 9%,var(--ink) 91%,transparent 100%);
+ mask-composite:intersect;
+}
+.ma-close-optics{width:100%;height:100%}
+.ma-close-image{display:block;width:100%;height:100%;object-fit:contain;transform-origin:63% 28%;transform:scale(1);transition:transform 660ms cubic-bezier(.215,.61,.355,1)}
+.ma-closer.is-close .ma-close-image{transform:scale(1.8)}
+.ma-closer.is-framing .ma-close-optics{filter:none!important;pointer-events:none}
+.ma-close-figure figcaption{margin-top:20px;min-height:2.8em;max-width:31ch}
+.ma-close-actions{display:flex;align-items:center}
+#ma-main .ma-close-toggle{position:relative;border:0;background:none;color:var(--ink);cursor:pointer;padding:12px 4px 18px;min-height:48px;min-width:145px;font:italic 400 23px/1.4 var(--font-control);text-align:left}
+.ma-close-toggle:focus-visible{outline:2px solid var(--ink);outline-offset:5px}
+.ma-close-toggle .ma-waterline-curve{position:absolute;left:4px;right:4px;bottom:0;width:calc(100% - 8px);height:14px;fill:none;stroke:currentColor;stroke-width:.7}
+.ma-close-failure{margin:16px 0}
+@media(max-width:999px),(max-height:699px){.ma-flight-media{grid-template-columns:repeat(2,minmax(0,1fr))}.ma-flight-panel:nth-child(3n+2){padding-top:0}.ma-flight-panel:nth-child(even){padding-top:48px}}
+@media(max-width:760px){.ma-closer-inner{grid-template-columns:1fr;gap:40px}.ma-close-frame{max-width:480px}.ma-close-figure{max-width:480px;width:100%;margin-left:auto}.ma-flight-heading{margin-bottom:40px}.ma-flight-media{gap:32px 16px}.ma-flight-panel figcaption{font-size:18px!important}}
+@media(max-width:360px){.ma-flight-media{grid-template-columns:1fr;gap:32px}.ma-flight-panel:nth-child(n){padding-top:0;max-width:260px;margin-inline:auto}.ma-flight-image{aspect-ratio:4/5}}
+@media(prefers-reduced-motion:reduce),(forced-colors:active){.ma-close-image{transition:none}.ma-passing .ma-flight-panel{transform:none!important;opacity:1!important;filter:none!important;will-change:auto}.ma-passing.is-flying{height:auto}}

@@ -1,0 +1,123 @@
+/* Ma public edition. Review typography; chapter mechanics remain shared. */
+:root{--rail:0px;--font-reading:"Newsreader",Georgia,serif;--font-mono:ui-monospace,monospace;--reading-size:26px;--measure:38ch}
+/* Approved handwriting extends across chapter descriptions, not site controls. */
+#ma-main{--font-reading:"Waiting for the Sunrise","Newsreader",Georgia,serif;--reading-size:clamp(20px,1.75vw,25px)}
+#ma-main h1{font-weight:400}
+body{font:400 var(--reading-size)/1.5 var(--font-reading);overflow-wrap:break-word}
+#ma-main p,#ma-main small,#ma-main .ma-body{font:400 var(--reading-size)/1.5 var(--font-reading)!important;max-width:var(--measure);letter-spacing:0;color:var(--ink-dim)}
+#ma-main h2{font-size:clamp(36px,4.26vw,62px);line-height:1.2;letter-spacing:0;font-weight:400}
+@media(max-width:900px){#ma-main h2{font-size:clamp(30px,7vw,42px)}}
+#ma-main h3{font-family:var(--font-display);font-weight:400;line-height:1.3}
+/* Newsreader display; chapter prose and captions share the approved handwriting. */
+#ma-main .ch04 figcaption p,#ma-main .ch04 small{font-family:var(--font-reading)!important}
+#ma-main em{font-style:normal}
+#ma-main figcaption{font:400 22px/1.5 var(--font-reading);letter-spacing:0}
+/* Caption/card labels are annotations, not section display headings. Override
+   inherited chapter-specific span/h3 faces while retaining their existing sizes. */
+#ma-main figcaption :is(span,h3,p,small){font-family:var(--font-reading)!important;font-weight:400}
+#ma-main figcaption [lang=ja]{font-family:"Noto Serif JP",serif!important}
+.ch01-caption{font-family:var(--font-reading)}
+.ma-ch{scroll-margin-top:112px}
+.ma-ch:focus{outline:none}
+.ma-ch:focus-visible{outline:2px solid var(--ink);outline-offset:-6px}
+.ma-skip{position:fixed;top:12px;left:12px;z-index:100;transform:translateY(-180%);background:var(--ground);padding:12px}
+.ma-skip:focus{transform:none}
+a:focus-visible,button:focus-visible{outline:2px solid currentColor;outline-offset:5px}
+#ma-header{mix-blend-mode:normal;color:var(--ink);background:color-mix(in srgb,var(--ground) 94%,transparent);gap:20px;padding-block:18px}
+.ma-nav a{opacity:1;min-height:44px;display:inline-flex!important;align-items:center;white-space:nowrap}
+.ma-nav{gap:clamp(16px,3vw,40px)}
+/* Native disclosure: hidden without enhancement; desktop links keep their layout. */
+.ma-chapters-toggle{display:none;border:0;background:none;color:inherit;cursor:pointer;padding:0;min-height:44px;min-width:44px;font:italic 400 21px/1.4 var(--font-control);gap:10px;align-items:center;justify-content:center;touch-action:manipulation}
+.ma-chapters-toggle[hidden],#ma-header .ma-nav[hidden]{display:none!important}
+.ma-chapters-toggle svg{flex:none}
+/* Original Waterline plate was visible through difference blend. Public's normal
+   light header needs the same pointer-following plate in ink, not pale green. */
+#ma-header .ma-nav [data-waterline]::after,#ma-main .ch06-choices [data-waterline]::after{background:radial-gradient(ellipse 55% 110% at var(--water-x) 110%,color-mix(in srgb,currentColor 14%,transparent),transparent 85%)}
+/* A navigation name is one label; shared prose ripples may wrap, nav may not. */
+#ma-header .ma-nav .wh-visual,#ma-header .ma-nav .wh-word{white-space:nowrap;overflow-wrap:normal}
+.ma-mark{display:inline-flex;align-items:center;min-height:44px}
+.ch01-hero{padding-left:clamp(24px,8vw,128px)}
+.ch01-caption{font-size:20px;max-width:16ch}
+.ch01-sub{max-width:38ch!important}
+/* The opening now inherits the same description treatment as later chapters. */
+#ma-main .ch01-sub{font-family:var(--font-reading)!important;font-size:var(--reading-size)!important;line-height:1.5!important}
+.ch02-grid{grid-template-columns:minmax(0,.9fr) minmax(0,1.25fr);gap:clamp(32px,5vw,80px)}
+.ch02{padding-inline:clamp(24px,6vw,96px)}
+.ch02-sub,.ch02-after{max-width:36ch!important}
+/* Include the current native image, transition canvas and full caption extent
+   in one stationary optical host. Flow-root contains the stage's bottom margin. */
+.ch02-optics{display:flow-root;min-width:0}
+.ch03{padding-inline:clamp(24px,6vw,96px)}
+.ch03-sub{max-width:38ch!important}
+/* Image and drawing share exactly 1672×941, irrespective of caption wrapping. */
+.ch03-media{position:relative;isolation:isolate}
+.ch03-drawn{overflow:hidden}
+.ch03-caption{margin-top:24px;display:block;max-width:52ch}
+.ch03-state{font:400 24px/1.5 var(--font-reading);opacity:1!important;transition:none}
+.ch03-let-go{font:italic 400 23px/1.5 var(--font-control);min-height:44px;min-width:44px;padding:8px 4px}
+.ch03-state--after:focus-visible{outline:2px solid var(--ink);outline-offset:6px}
+.ch03-stem{min-width:44px;min-height:44px;border-radius:0}
+.ch03-stem:focus-visible{outline:2px solid var(--ink);outline-offset:4px;background:color-mix(in srgb,var(--ground) 14%,transparent)}
+.ch03-plate.is-removed .ch03-ring{animation:none}
+.ch03-plate.is-rippling .ch03-ring--one{animation:ch03-ring var(--composition-duration) var(--ease-ma) both}
+.ch03-plate.is-rippling .ch03-ring--two{animation:ch03-ring var(--composition-duration) var(--ease-ma) both;animation-delay:0s}
+.ch03-ring--two{stroke-opacity:.4}
+.ch04 .ch04-seasons{gap:clamp(20px,3vw,44px)}
+.ch04 figcaption h3{margin-bottom:12px}
+.ch04 small{max-width:24ch!important}
+.ch04 .ch04-inner,.ch06 .ch06-inner,.ch07 .ch07-inner{width:min(1360px,calc(100% - 96px))}
+.ch06-choices{flex-wrap:wrap;gap:16px}
+.ch06-choices button{min-height:44px;min-width:44px}
+.ch06 .ch06-choices button{font:italic 400 23px/1.4 var(--font-control);letter-spacing:0}
+.ch06 .ch06-choices button span{font:inherit;display:inline;margin:0}
+.ma-space-closing{margin:40px 0 0 auto}
+.ma-about{padding:clamp(80px,14vh,180px) clamp(24px,8vw,128px)}
+.ma-about-inner{max-width:1100px;margin:auto}
+.ma-about h2{max-width:18ch;margin:0 0 40px}
+.ma-about p{margin:0 0 32px}
+.ma-about-links{display:flex;gap:24px;flex-wrap:wrap;margin-top:40px}
+.ma-about-links a{display:inline-flex;align-items:center;min-height:44px;font:italic 400 23px/1.4 var(--font-control)}
+#ma-footer{--font-reading:"Waiting for the Sunrise","Newsreader",Georgia,serif;font:400 20px/1.5 var(--font-reading);letter-spacing:0;text-transform:none;border:0;padding:32px clamp(24px,6vw,96px)}
+#ma-footer .ma-footer-credit{font:400 22px/1.5 var(--font-reading)}
+.ma-making{max-width:1000px;margin:0 auto;padding:clamp(24px,6vw,96px)}
+.ma-making h1{font:400 clamp(46px,7vw,88px)/1.15 var(--font-display);margin:64px 0 40px}
+.ma-making h2{font:400 clamp(34px,4vw,52px)/1.2 var(--font-display);margin:64px 0 24px}
+.ma-making p{max-width:58ch;color:var(--ink-dim);margin:0 0 28px;font:400 21px/1.55 "Newsreader",Georgia,serif}
+.ma-making a{display:inline-flex;align-items:center;min-height:44px;font:italic 400 23px/1.4 var(--font-control);text-decoration:underline;text-decoration-thickness:1px;text-underline-offset:5px}
+.ma-making nav{display:flex;gap:24px;flex-wrap:wrap;margin-top:48px}
+@media(min-width:900px) and (min-height:650px) and (hover:hover) and (pointer:fine){.ch02.has-image-lens{height:var(--approach-height)}}
+@media(max-width:899px),(max-height:649px){
+ .ch02.has-image-lens{height:auto}.ch02-grid{display:grid;grid-template-columns:1fr}.ch02-text,.ch02.has-image-lens .ch02-grid{position:static}
+}
+@media(max-width:899px){
+ :root{--reading-size:24px}.ch01-hero{padding:144px 24px 32px}
+ .ch04 .ch04-inner,.ch06 .ch06-inner,.ch07 .ch07-inner{width:calc(100% - 48px)}
+ #ma-header{padding:12px 20px}.ma-nav{gap:14px}.ma-nav a{font-size:21px}
+ .ch03-state{font-size:22px}.ma-ch{scroll-margin-top:128px}
+}
+@media(max-width:600px){
+ #ma-header{align-items:start;gap:12px}.ma-mark{font-size:26px}.ma-mark-latin{font-size:22px;margin-left:8px}
+ #ma-header .ma-nav{display:grid;grid-template-columns:auto auto;gap:0 8px}
+ #ma-header .ma-nav a{font-size:20px;padding:0 2px;min-height:44px}
+ /* Only the enhanced header collapses. No-JS keeps all four native links. */
+ #ma-header[data-chapters-ready]{align-items:center;gap:12px}
+ #ma-header[data-chapters-ready] .ma-chapters-toggle:not([hidden]){display:inline-flex}
+ #ma-header[data-chapters-ready] .ma-nav{position:absolute;top:100%;left:0;right:0;display:flex;flex-direction:column;gap:0;padding:8px 20px 16px;background:var(--ground);max-height:calc(100vh - 68px);max-height:calc(100dvh - 68px);overflow-y:auto;overscroll-behavior:contain}
+ #ma-header[data-chapters-ready] .ma-nav a{width:100%;font-size:23px;padding:8px 4px;min-height:44px;justify-content:flex-start}
+ #ma-header[data-chapters-open]{transform:none;pointer-events:auto}
+ #ma-header[data-chapters-ready] ~ #ma-main .ch01-hero{padding-top:108px}
+ #ma-header[data-chapters-ready] ~ #ma-main .ma-ch{scroll-margin-top:80px}
+ .ch01-hero{padding-top:152px}.ch01-title{font-size:clamp(36px,9.4vw,56px);max-width:100%;overflow-wrap:normal}
+ .ch04 .ch04-seasons{grid-template-columns:1fr;gap:40px}.ch04 figure:nth-child(even){padding-top:0}
+ .ch04 figure{max-width:440px}.ch04 figure:nth-child(even){margin-left:auto}
+ .ch04 small{max-width:34ch!important}.ch01-caption{left:calc(50% + 50px);font-size:18px;max-width:min(13ch,calc(50vw - 74px))}
+ .ma-about-links{flex-direction:column;align-items:start;gap:16px}
+ .ma-space-closing{margin-left:0}.ch03{padding-inline:18px}
+ .ch06-choices{justify-content:flex-start}.ch07 img{aspect-ratio:3/2;object-fit:contain}
+}
+@media(max-width:360px){.ch01-caption{left:calc(50% + 34px);max-width:110px;font-size:16px}}
+@media(prefers-reduced-motion:reduce),(forced-colors:active){
+ .ch03-plate .ch03-third,.ch03-plate .ch03-ring{animation:none!important;transition:none!important}
+ .ch03-plate.is-removed .ch03-third{visibility:hidden}
+}
+@media(forced-colors:active){#ma-header{background:Canvas;color:CanvasText}.ma-ch{background:Canvas;color:CanvasText}}

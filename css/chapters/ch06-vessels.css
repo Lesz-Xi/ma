@@ -1,0 +1,59 @@
+/* ch06-vessels · only chapter-local selectors. Shared tokens are consumed, never redefined. */
+.ch06 { padding-block: clamp(80px, 9vw, 160px); color: var(--ink); background: var(--ground); }
+.ch06 .ch06-inner { width: min(1280px, calc(100% - 96px)); margin-inline: auto; }
+.ch06 .ch06-heading { display: grid; grid-template-columns: 1.4fr 1fr; gap: 48px; align-items: end; margin-bottom: 64px; }
+.ch06 h2 { margin: 0; font: 400 clamp(48px, 5.7vw, 88px)/1.02 var(--font-display); letter-spacing: -.025em; text-wrap: balance; }
+.ch06 h2 em { font-weight: 400; }
+.ch06 .ch06-intro { margin: 0 0 5px; max-width: var(--measure); font: 400 clamp(20px, 1.8vw, 26px)/1.45 var(--font-display); color: var(--ink-dim); }
+.ch06 [hidden] { display: none !important; }
+.ch06 .ch06-choices { display: flex; gap: 36px; border-bottom: 1px solid var(--line); margin-bottom: 24px; }
+.ch06 .ch06-choices button { position: relative; min-height: 52px; padding: 10px 0 16px; border: 0; border-bottom: 1px solid transparent; margin-bottom: -1px; background: transparent; color: var(--ink-dim); font: 400 13px/1.4 var(--font-mono); letter-spacing: 0; text-transform: none; appearance: none; border-radius: 0; cursor: pointer; -webkit-tap-highlight-color: transparent; touch-action: manipulation; }
+.ch06 .ch06-choices button span { margin-left: 6px; }
+.ch06 .ch06-choices button[aria-selected="true"] { color: var(--ink); border-bottom-color: var(--ink); }
+.ch06 .ch06-choices button:hover { color: var(--ink); }
+.ch06 .ch06-choices button:focus-visible { outline: 2px solid var(--ink); outline-offset: 5px; }
+.ch06 .ch06-study { display: grid; grid-template-columns: minmax(0, 1.55fr) minmax(0, .9fr); gap: clamp(32px, 5vw, 80px); align-items: center; padding-block: 22px; }
+.ch06 .ch06-study:focus-visible { outline: 2px solid var(--ink); outline-offset: 8px; }
+.ch06:not([data-vessels-ready]) .ch06-study + .ch06-study { margin-top: 64px; border-top: 1px solid var(--line); }
+.ch06 .ch06-plate { margin: 0; min-width: 0; position: relative; }
+.ch06 .ch06-plate img { display: block; width: 100%; height: auto; aspect-ratio: 6 / 5; object-fit: contain; }
+.ch06 .ch06-plate figcaption { display: flex; justify-content: space-between; flex-wrap: wrap; gap: 8px 24px; margin-top: 16px; color: var(--ink-dim); font: 400 12px/1.6 var(--font-mono); }
+.ch06 .ch06-reading { padding-block: 24px; }
+.ch06 h3 { margin: 0 0 20px; font: 400 clamp(32px, 3.2vw, 48px)/1.1 var(--font-display); letter-spacing: -.015em; text-wrap: balance; }
+.ch06 .ch06-reading > p { max-width: 30ch; margin: 0; color: var(--ink-dim); font: 400 clamp(20px, 1.6vw, 24px)/1.5 var(--font-display); }
+.ch06 dl { margin: 36px 0 0; padding: 0; border-top: 1px solid var(--line); font: 400 12px/1.6 var(--font-mono); }
+.ch06 dl > div { display: grid; grid-template-columns: 1fr; gap: 4px; padding-block: 15px; border-bottom: 1px solid var(--line); }
+.ch06 dt { color: var(--ink-dim); }
+.ch06 dd { margin: 0; color: var(--ink); }
+.ch06 .ch06-footnote { border-top: 1px solid var(--line); margin-top: 48px; padding-top: 20px; font: 400 12px/1.7 var(--font-mono); color: var(--ink-dim); }
+.ch06 .ch06-footnote p { margin: 0; }
+.ch06 .ch06-media-fallback { position: absolute; inset: 0 0 34px; display: grid; place-items: center; padding: 30px; background: var(--surface); color: var(--ink); font: 400 18px/1.5 var(--font-display); text-align: center; }
+.ch06 .ch06-status { position: absolute; width: 1px; height: 1px; padding: 0; margin: -1px; overflow: hidden; clip-path: inset(50%); white-space: nowrap; border: 0; }
+@media (max-width: 899px) {
+  .ch06 .ch06-inner { width: calc(100% - 48px); }
+  .ch06 .ch06-heading { grid-template-columns: 1fr; gap: 24px; margin-bottom: 36px; }
+  .ch06 .ch06-intro { max-width: 32ch; }
+  .ch06 .ch06-study { grid-template-columns: 1fr; gap: 20px; padding-block: 0; }
+  .ch06 .ch06-reading { padding-top: 16px; }
+  .ch06 .ch06-reading > p { max-width: 38ch; }
+  .ch06 dl > div { grid-template-columns: minmax(100px, .75fr) minmax(0, 1.5fr); gap: 20px; }
+  .ch06 .ch06-choices { gap: 24px; }
+}
+@media (max-width: 540px) {
+  .ch06 { padding-block: 64px; }
+  .ch06 .ch06-inner { width: calc(100% - 36px); }
+  .ch06 h2 { font-size: clamp(40px, 10vw, 56px); }
+  .ch06 .ch06-intro { font-size: 21px; }
+  .ch06 .ch06-choices { justify-content: space-between; gap: 12px; }
+  .ch06 .ch06-choices button { font-size: 12px; min-height: 56px; text-align: left; }
+  .ch06 .ch06-choices button span { display: block; margin: 3px 0 0; font-size: 10px; }
+  .ch06 .ch06-plate figcaption { font-size: 11px; gap: 6px 12px; }
+  .ch06 .ch06-reading { padding-top: 6px; }
+  .ch06 h3 { font-size: 36px; }
+  .ch06 dl { font-size: 11px; }
+  .ch06 dl > div { gap: 12px; }
+  .ch06 .ch06-footnote { margin-top: 28px; font-size: 11px; }
+}
+@media (prefers-reduced-motion: reduce) {
+  .ch06 *, .ch06 *::before, .ch06 *::after { animation: none !important; transition: none !important; }
+}

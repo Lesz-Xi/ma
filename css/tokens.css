@@ -1,0 +1,157 @@
+
+/* Approved Ma type pairing: LingWai SC reading / Newsreader Italic controls.
+   LingWai is a local system face; no operating-system font is copied into the export. */
+
+
+/* 間 Ma — tokens + shell base (canonical block per plan/shell-contract.md §4) */
+
+
+
+
+[lang="ja"]{font-family:"Noto Serif JP",var(--font-display)}
+
+:root {
+  --ground:#f5f3ed; --surface:#ebe7de; --ink:#302f29; --ink-dim:#656157;
+  --ink-faint:#656157; --line:#d4d0c5;
+  --accent:currentColor;
+  --font-display:"Newsreader",Georgia,serif;
+  --font-reading:"Newsreader",Georgia,serif;
+  --font-control:"Newsreader",Georgia,serif;
+  --font-mono:"Spline Sans Mono",ui-monospace,SFMono-Regular,monospace;
+  --rail:96px;
+  --measure:38ch;
+  --ease-ma:cubic-bezier(.22,.61,.21,1);
+}
+
+*,*::before,*::after{box-sizing:border-box}
+/* the shell owns the hidden contract: an author display rule must never resurrect a hidden element */
+[hidden]{display:none!important}
+html,body{margin:0;padding:0}
+html{scrollbar-width:none}
+html::-webkit-scrollbar,body::-webkit-scrollbar{display:none}
+body{
+  background:var(--ground); color:var(--ink);
+  font-family:var(--font-mono); font-size:12px; line-height:1.7;
+  -webkit-font-smoothing:antialiased;
+}
+body.lenis,body.lenis html{height:auto}
+.lenis.lenis-smooth{scroll-behavior:auto!important}
+
+::selection{background:rgba(114,119,98,.28)}
+a{color:inherit;text-decoration:none}
+a:focus-visible,button:focus-visible{outline:1px solid var(--ink);outline-offset:3px}
+button{appearance:none;-webkit-appearance:none;border-radius:0;border:0;background:none;color:inherit;font:inherit;cursor:pointer}
+
+/* — First Drop arrival: Paper bloom, shared Lab circle/ripples, then no overlay — */
+#veil{
+  position:fixed;inset:0;z-index:60;display:grid;place-items:center;pointer-events:none;
+  background:var(--ground);color:var(--ink);animation:ma-entry-safety .01s linear 6.5s forwards;
+}
+#veil.is-ready{background:transparent}
+#veil .ma-entry-flower{position:relative;display:block;width:clamp(128px,16vw,176px);height:auto;overflow:visible}
+#veil .ma-entry-water{position:absolute;inset:0;width:100%;height:100%;overflow:hidden}
+#veil .ma-entry-sheet{fill:var(--ground)}
+#veil .ma-entry-rim{fill:none;stroke:var(--ink);stroke-width:.7;stroke-linecap:round;vector-effect:non-scaling-stroke}
+@keyframes ma-entry-safety{to{visibility:hidden}}
+html[data-reduced="true"] #veil{display:none}
+@media(prefers-reduced-motion:reduce),(forced-colors:active){#veil{display:none}}
+
+/* — header — */
+#ma-header{
+  position:fixed;inset:0 0 auto 0;z-index:50;
+  display:flex;justify-content:space-between;align-items:center;
+  padding:26px clamp(18px,4.5vw,72px);
+  font:400 21px/1.2 var(--font-control);letter-spacing:0;text-transform:none;
+  mix-blend-mode:difference;color:#fff;
+}
+.ma-mark{font-family:"Noto Serif JP",serif;font-size:30px;letter-spacing:0;text-transform:none}
+.ma-mark-latin{font-family:var(--font-control);font-size:25px;letter-spacing:0;opacity:1;margin-left:12px}
+.ma-nav{display:flex;gap:26px}
+.ma-nav a{opacity:.6;transition:opacity .3s var(--ease-ma)}
+.ma-nav a:hover{opacity:1}
+.ma-nav-cta{border:0;border-bottom:1px solid currentColor;padding:6px 0}
+
+/* — rail — */
+#ma-rail{
+  position:fixed;left:0;top:0;bottom:0;width:var(--rail);z-index:40;
+  display:flex;align-items:center;justify-content:center;pointer-events:none;
+  mix-blend-mode:difference;
+}
+#ma-rail-label{
+  writing-mode:vertical-rl;letter-spacing:.34em;text-transform:uppercase;
+  font-size:10px;color:#fff;transition:opacity .5s var(--ease-ma);
+}
+
+/* — main / chapters — */
+#ma-main{position:relative}
+.ma-ch{position:relative;padding-left:var(--rail)}
+.ma-ch-missing{padding:40vh 0;text-align:center;color:var(--ink-faint)}
+.ma-eyebrow{
+  font-size:10px;letter-spacing:.3em;text-transform:uppercase;color:var(--ink-faint);
+  display:inline-flex;align-items:center;gap:10px;
+}
+.ma-eyebrow::before{content:"";width:26px;height:1px;background:var(--line)}
+.ma-h{
+  font-family:var(--font-display);font-weight:400;letter-spacing:0;
+  line-height:1.08;margin:0;text-wrap:balance;
+}
+.ma-body{max-width:var(--measure);color:var(--ink-dim)}
+.ma-cta{
+  display:inline-block;padding:13px 30px;border:1px solid var(--ink);
+  font-size:10px;letter-spacing:.24em;text-transform:uppercase;
+  transition:background .4s var(--ease-ma),color .4s var(--ease-ma);
+}
+.ma-cta:hover{background:var(--ink);color:var(--ground)}
+
+#ma-footer{
+  display:flex;justify-content:space-between;gap:20px;flex-wrap:wrap;
+  padding:34px 28px;border-top:1px solid var(--line);background:var(--ground);
+  font-size:10px;letter-spacing:.16em;text-transform:uppercase;color:var(--ink-faint);
+}
+.ma-footer-note{letter-spacing:.08em;text-transform:none}
+/* A quiet author signature; XI keeps native external-link behavior. */
+#ma-footer{align-items:center}
+#ma-footer .ma-footer-credit{
+  display:flex;align-items:center;gap:2px;margin:0 0 0 auto;
+  font:400 19px/1.4 var(--font-reading);letter-spacing:0;text-transform:none;
+  color:var(--ink-dim);white-space:nowrap;
+}
+#ma-footer .ma-footer-credit-link{
+  display:inline-flex;align-items:center;justify-content:center;min-width:44px;min-height:44px;
+  color:var(--ink);font:inherit;letter-spacing:0;text-decoration:none;touch-action:manipulation;
+}
+#ma-footer .ma-footer-credit-link:focus-visible{outline:2px solid currentColor;outline-offset:4px}
+
+
+@media (max-width:899px){
+  :root{--rail:40px}
+  #ma-header{padding:16px 18px}
+  .ma-nav{gap:16px}
+  .ma-nav a:not(.ma-nav-cta){display:none}
+}
+
+html[data-reduced="true"] *{animation:none!important;transition:none!important}
+
+/* The vertical desktop rail must not cross the mobile reading column. */
+@media(max-width:899px){#ma-rail{display:none}}
+
+/* Original Reed: exact contact point, outside filtered chapters and native hit areas. */
+.ma-reed-cursor{position:fixed;left:0;top:0;width:32px;height:32px;z-index:55;pointer-events:none;color:#f1efe7;mix-blend-mode:difference;opacity:0;}
+.ma-reed-cursor svg{display:block;overflow:visible;}
+.ma-reed-cursor.is-visible{opacity:1;}
+.ma-reed-lean{transform-origin:16px 16px;rotate:var(--reed-angle,0deg);transition:rotate .15s ease-out}
+.ma-reed-form{transform-origin:16px 16px;transition:scale .22s cubic-bezier(.2,.7,.2,1)}
+.ma-reed-cursor.is-target .ma-reed-form{scale:1.15 1.12}
+.ma-reed-cursor.is-pressed .ma-reed-form{scale:1 .75}
+@media (hover:hover) and (pointer:fine) and (min-width:900px) and (prefers-reduced-motion:no-preference) and (forced-colors:none){
+  html.ma-reed-active,html.ma-reed-active *{cursor:none!important;}
+}
+@media (prefers-reduced-motion:reduce),(forced-colors:active),(hover:none),(pointer:coarse),(max-width:899px){
+  .ma-reed-cursor{display:none;}
+}
+
+/* Navigation makes room for reading below the hero; upward intent brings it back. */
+#ma-header{transition:transform .36s var(--ease-ma)}
+#ma-header[data-scroll-hidden]{transform:translateY(-110%);pointer-events:none}
+#ma-header:focus-within{transform:none;pointer-events:auto}
+@media(prefers-reduced-motion:reduce){#ma-header{transition:none}}

@@ -1,0 +1,18 @@
+/* Two entrance boundaries in native document flow. No pinning or scroll spacers. */
+.ma-section-optics,.ma-section-rim{position:absolute;top:0;left:0;pointer-events:none;z-index:3;overflow:hidden}
+.ma-section-rim{color:var(--ink-dim)}
+.ma-water-meniscus{fill:none;stroke:currentColor;stroke-width:.7;stroke-opacity:.2;vector-effect:non-scaling-stroke}
+.ma-water-light{fill:none;stroke:var(--ground);stroke-width:2;stroke-opacity:.65;vector-effect:non-scaling-stroke}
+[data-section-water="silkfold"] .ma-section-rim{mask-image:linear-gradient(to bottom,transparent,var(--ink) 8%,var(--ink) 92%,transparent);-webkit-mask-image:linear-gradient(to bottom,transparent,var(--ink) 8%,var(--ink) 92%,transparent)}
+[data-section-water="silkfold"] .ma-water-meniscus{stroke-width:.7;stroke-opacity:.32;stroke-linecap:round;stroke-linejoin:round}
+[data-section-water="silkfold"] .ma-water-light{display:none}
+.ma-section-defs{position:absolute;width:0;height:0;pointer-events:none;overflow:hidden}
+/* Header and Reed remain present. A press dismisses the inert visual handoff. */
+.ma-rainfield-nav{position:fixed;inset:0;width:100%;height:100%;z-index:45;overflow:hidden;isolation:isolate}
+.ma-rainfield-source,.ma-rainfield-optics{position:absolute;inset:0;width:100%;height:100%;pointer-events:none}
+.ma-rainfield-source{overflow:hidden;mask-size:100% 100%;-webkit-mask-size:100% 100%;mask-repeat:no-repeat;-webkit-mask-repeat:no-repeat}
+.ma-rainfield-optics{z-index:1}
+@media(prefers-reduced-motion:reduce),(forced-colors:active){
+ .ma-section-optics,.ma-section-rim,.ma-rainfield-nav{display:none!important}
+ .ma-ch[data-section-water]{clip-path:none!important}
+}

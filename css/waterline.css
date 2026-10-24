@@ -1,0 +1,57 @@
+/* Waterline v2, promoted from XI Lab. Scoped to opted-in controls; no scroll rules. */
+#ma-header [data-waterline],#ma-main [data-waterline]{
+  --water-x:50%;position:relative;isolation:isolate;display:inline-flex;align-items:center;justify-content:center;
+  min-height:48px;min-width:44px;padding:12px 18px;border:0;border-radius:0;
+  background:transparent;color:var(--ink);font:italic 400 19px/1.4 var(--font-control);
+  letter-spacing:0;text-transform:none;text-decoration:none;touch-action:manipulation;
+  transition:color .3s var(--ease-ma);overflow:hidden;
+}
+#ma-header [data-waterline]{color:inherit;opacity:.85}
+#ma-header [data-waterline]:hover{opacity:1}
+#ma-header .ma-nav{gap:6px;align-items:center}
+#ma-header [data-waterline]::after,#ma-main [data-waterline]::after{
+  content:'';position:absolute;inset:0;z-index:-1;pointer-events:none;
+  background:radial-gradient(ellipse 55% 110% at var(--water-x) 110%,rgba(234,240,220,.14),transparent 85%);
+  opacity:0;transform:translateY(12px);transition:opacity .3s,transform .38s var(--ease-ma);
+}
+#ma-header [data-waterline]:is(:hover,:focus-visible)::after,#ma-main [data-waterline]:is(:hover,:focus-visible)::after{opacity:1;transform:translateY(0)}
+#ma-header [data-waterline]:focus-visible,#ma-main [data-waterline]:focus-visible{outline:2px solid currentColor;outline-offset:4px}
+#ma-header [data-waterline]::before,#ma-main [data-waterline][role=tab]::before{content:'';width:3px;height:3px;flex:0 0 3px;background:currentColor;border-radius:50%;margin-right:10px;opacity:0}
+#ma-header [data-waterline][aria-current=location]::before,#ma-main [data-waterline][aria-selected=true]::before{opacity:1}
+#ma-main [data-waterline]:disabled{opacity:.4;cursor:default}
+#ma-main [data-waterline]:disabled::after{display:none}
+/* The hero and field-notes link share one pointer-following crest, not a resting underline. */
+#ma-main [data-waterline="original"]{overflow:visible}
+#ma-main [data-waterline="original"]::after{display:none}
+#ma-main [data-waterline="original"]>span{position:relative;z-index:1;pointer-events:none}
+.ma-waterline-curve{position:absolute;left:0;bottom:0;width:100%;height:18px;fill:none;stroke:currentColor;stroke-width:.8;pointer-events:none;opacity:0;transform:scaleY(.08);transform-origin:bottom;transition:transform .38s var(--ease-ma),opacity .25s}
+[data-waterline="original"]:focus-visible .ma-waterline-curve{opacity:.65;transform:scaleY(1)}
+@media(hover:hover) and (pointer:fine){[data-waterline="original"]:hover .ma-waterline-curve{opacity:.65;transform:scaleY(1)}}
+html[data-reduced=true] .ma-waterline-curve{display:none}
+@media(prefers-reduced-motion:reduce),(forced-colors:active){.ma-waterline-curve{display:none}}
+#ma-main .ch06-choices{border:0;gap:12px;flex-wrap:wrap}
+#ma-main .ch06-choices [data-waterline]{margin:0;min-height:52px;text-align:left}
+#ma-main .ch06-choices [data-waterline] span{font:inherit;margin:0 0 0 5px;display:inline}
+/* Reading prose uses the selected face; indexes, labels and technical metadata keep mono. */
+#ma-main .ma-body,#ma-main .ch08-step-body>p,#ma-main .ch09-path>p,#ma-main .ch10-note>p,#ma-main .ch11-echo{
+  font:400 clamp(19px,1.6vw,23px)/1.55 var(--font-reading);letter-spacing:0;text-wrap:pretty;
+}
+#ma-main .ch11-field input,#ma-main .ch11-field textarea{font:400 20px/1.5 var(--font-reading)}
+#ma-main .ch01-sub{max-width:36ch}
+@media(max-width:899px){
+  #ma-header{padding:12px 16px}
+  #ma-header [data-waterline]{font-size:18px;padding:10px 12px}
+  #ma-header .ma-nav a:not(.ma-nav-cta){display:none}
+  #ma-main .ch06-choices{gap:4px}
+  #ma-main .ch06-choices [data-waterline]{font-size:17px;padding:10px 8px;flex-wrap:wrap}
+}
+@media(prefers-reduced-motion:reduce){[data-waterline]::after{display:none!important}}
+html[data-reduced=true] [data-waterline]::after{display:none!important}
+@media(forced-colors:active){
+  #ma-header [data-waterline],#ma-main [data-waterline]{border:1px solid ButtonText;color:ButtonText;background:Canvas;opacity:1}
+  [data-waterline]::after{display:none!important}
+  #ma-header [data-waterline][aria-current=location],#ma-main [data-waterline][aria-selected=true]{color:Highlight}
+}
+
+/* Touch hover must not leave a persistent optical plate after a tap. */
+@media(hover:none){#ma-header [data-waterline]:hover:not(:focus-visible)::after,#ma-main [data-waterline]:hover:not(:focus-visible)::after{opacity:0;transform:translateY(12px)}}

@@ -1,0 +1,66 @@
+/* Arrival · Paper light botanical study. */
+.ch01{
+  --ink:#302f29;--ink-dim:#656157;--ink-faint:#656157;
+  --line:#d4d0c5;
+  min-height:100svh;display:flex;flex-direction:column;overflow:hidden;
+  position:relative;padding:0;background:var(--ground);color:var(--ink);
+}
+.ch01-hero{
+  position:relative;z-index:1;flex:1;display:grid;
+  grid-template-columns:minmax(0,1fr) minmax(0,1fr);
+  gap:clamp(18px,2vw,36px);align-items:center;
+  width:100%;max-width:1600px;margin:0 auto;
+  padding:clamp(115px,14vh,145px) clamp(28px,4.5vw,72px) 30px max(calc(var(--rail) + 28px),8.5vw);
+}
+.ch01-reading{max-width:620px;display:flex;flex-direction:column;align-items:flex-start;gap:clamp(24px,3.5vh,36px)}
+.ch01-title{
+  width:100%;max-width:620px;margin:0;
+  font-size:clamp(48px,5.2vw,74px);line-height:1.2;letter-spacing:0;
+  text-wrap:initial;
+}
+.ch01-sub{max-width:405px!important;margin:0;font:400 clamp(20px,1.75vw,25px)/1.4 var(--font-reading)!important;color:var(--ink-dim)}
+#ma-main .ch01 .ma-cta{
+  min-height:48px;min-width:44px;display:inline-flex;justify-content:flex-start;
+  gap:18px;align-items:center;overflow:visible;
+  padding:12px 4px 16px;border:0;text-decoration:none;
+  font:italic 400 clamp(20px,1.6vw,23px)/1.3 var(--font-control);
+  letter-spacing:0;text-transform:none;color:var(--ink);background:transparent;
+}
+.ch01-arrow{flex:none;pointer-events:none;transition:transform .3s var(--ease-ma)}
+.ch01 .ma-cta:focus-visible .ch01-arrow{transform:translateX(3px)}
+@media(hover:hover) and (pointer:fine){
+  .ch01 .ma-cta:hover .ch01-arrow{transform:translateX(3px)}
+}
+@media(forced-colors:active){#ma-main .ch01 .ma-cta{border:1px solid ButtonText}}
+.ch01-botanical{
+  justify-self:stretch;align-self:stretch;min-height:0;display:flex;align-items:center;justify-content:center;
+  overflow:visible;container-type:inline-size;
+}
+.ch01-specimen{
+  position:relative;margin:0;width:min(100%,556px);aspect-ratio:1058/1254;
+}
+.ch01-specimen img{display:block;width:100%;height:100%;object-fit:contain}
+/* The leaf/stem junction is at approximately 50% x, 70% y of the source image. */
+.ch01-caption{
+  position:absolute;left:calc(50% + 40px);top:70%;width:max-content;max-width:calc(50cqw - 48px);
+  font:400 19px/1.3 var(--font-reading);color:var(--ink-dim);
+}
+/* More separation from the stem where the botanical column has room. */
+@media(min-width:1200px){
+  .ch01-caption{left:calc(50% + clamp(40px, 20vw - 200px, 96px))}
+}
+@media(max-width:899px){
+  .ch01-hero{grid-template-columns:1fr;gap:10px;align-content:start;padding:100px 24px 0}
+  .ch01-reading{gap:22px}
+  .ch01-title{font-size:clamp(46px,10vw,69px);max-width:11ch}
+  .ch01-sub{max-width:34ch!important;font-size:clamp(19px,5.2vw,23px)!important}
+  .ch01-botanical{height:clamp(250px,39vh,480px);align-self:auto}
+  .ch01-specimen{width:auto;height:100%;max-width:100%}
+  .ch01-caption{font-size:16px;line-height:1.25}
+}
+@media(max-width:460px){
+  .ch01-hero{padding-top:88px}
+  .ch01-title{font-size:clamp(43px,10vw,52px)}
+  .ch01-botanical{height:clamp(235px,35vh,330px)}
+}
+@media(forced-colors:active){.ch01{background:Canvas;color:CanvasText}}
