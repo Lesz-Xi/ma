@@ -1,0 +1,14 @@
+/* Vessels: the water layer lies exactly over the active plate's image. */
+.ch06 .ch06-studies{position:relative}
+.ch06 .ch06-water{position:absolute;z-index:2;pointer-events:none}
+.ch06 .ch06-water canvas{display:block;width:100%;height:100%}
+/* The quiet path (phones, coarse pointers, failure): the vessel rises into place and
+ * its notes follow, one after another. Exit is instant; the entrance takes .7–.9s. */
+.ch06 .ch06-study.is-arriving .ch06-plate img{opacity:0;transform:translateY(12px) scale(1.012)}
+.ch06 .ch06-study.is-arriving :is(.ch06-reading h3,.ch06-reading > p,.ch06-plate figcaption){opacity:0;transform:translateY(14px)}
+.ch06 .ch06-study.is-settling .ch06-plate img{transition:opacity .7s cubic-bezier(0,0,.13,.99),transform .9s cubic-bezier(.3,.9,.1,1)}
+.ch06 .ch06-study.is-settling :is(.ch06-reading h3,.ch06-reading > p,.ch06-plate figcaption){transition:opacity .6s cubic-bezier(0,0,.13,.99),transform .8s cubic-bezier(.3,.9,.1,1)}
+.ch06 .ch06-study.is-settling .ch06-reading h3{transition-delay:.08s}
+.ch06 .ch06-study.is-settling .ch06-reading > p{transition-delay:.16s}
+.ch06 .ch06-study.is-settling .ch06-plate figcaption{transition-delay:.12s}
+@media(forced-colors:active){.ch06 .ch06-water{display:none}}

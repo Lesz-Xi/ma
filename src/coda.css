@@ -1,0 +1,63 @@
+/* public/coda.css — the coda: 間 above one hairline, the water's surface, and room around it. */
+#ma-main .ma-coda{
+  display:flex;align-items:center;justify-content:center;
+  min-height:min(78vh,820px);padding:clamp(64px,12vh,140px) clamp(24px,8vw,128px) clamp(72px,14vh,160px);
+  padding-left:max(var(--rail),clamp(24px,8vw,128px));
+}
+.ma-coda-inner{--coda-mark:clamp(72px,9vw,128px);--furin-w:13.5px;--furin-h:38.25px;position:relative;display:flex;flex-direction:column;align-items:center;width:100%;max-width:1100px;margin:auto}
+.ma-coda-mark{
+  margin:0 0 clamp(28px,5vh,56px);
+  font:400 var(--coda-mark)/1 "Noto Serif JP",var(--font-display);
+  color:var(--ink);letter-spacing:0;user-select:none;-webkit-user-select:none;
+}
+/* The line spans the room, not the text: it is the water's surface, not a rule. */
+.ma-coda-line{display:block;width:100%;height:96px;overflow:visible;touch-action:pan-y}
+.ma-coda-line path{fill:none;stroke:var(--ink);stroke-opacity:.5;stroke-width:1px;stroke-linecap:round;stroke-linejoin:round}
+/* The caption keeps the edition's reading voice (the handwriting, set by #ma-main p). */
+#ma-main .ma-coda-caption{margin:clamp(24px,4.5vh,48px) 0 0;text-align:center}
+@media (max-width:899px){
+  #ma-main .ma-coda{min-height:58vh;padding:72px 24px 88px}
+  .ma-coda-line{height:80px}
+  .ma-coda-inner{--furin-w:10.5px;--furin-h:29.75px}
+}
+@media (forced-colors:active){
+  .ma-coda-line path{stroke:CanvasText;stroke-opacity:1}
+}
+/* Sound: a hairline fūrin (wind bell), no words. It hangs at the top right of the
+ * composition: its top on the top of 間's ink (.114em below the character's box), its
+ * right edge on the line's end. Off, the strip hangs still; on, the wind lifts it. The
+ * bell holds: only what changed moves. The button hugs the bell; ::before is its 44px target. */
+#ma-main .ma-coda-sound{
+  position:absolute;top:calc(var(--coda-mark) * .114);right:0;display:block;
+  width:var(--furin-w);height:var(--furin-h);margin:0;padding:0;border:0;border-radius:0;
+  background:transparent;appearance:none;color:var(--ink-dim);cursor:pointer;
+  -webkit-tap-highlight-color:transparent;touch-action:manipulation;transition:color .3s cubic-bezier(0,0,.13,.99);
+}
+#ma-main .ma-coda-sound::before{content:"";position:absolute;inset:calc((44px - var(--furin-h)) / -2) calc((44px - var(--furin-w)) / -2)}
+#ma-main .ma-coda-sound[hidden]{display:none}
+.ma-coda-furin{display:block;width:100%;height:100%;overflow:visible;fill:none;stroke:currentColor;stroke-width:1px;stroke-linecap:round;stroke-linejoin:round}
+.ma-coda-furin-strip{transform-box:view-box;transform-origin:8px 6px;transition:transform .9s cubic-bezier(.3,.9,.1,1)}
+#ma-main .ma-coda-sound[aria-pressed="true"]{color:var(--ink)}
+.ma-coda-sound[aria-pressed="true"] .ma-coda-furin-strip{transform:rotate(16deg)}
+@media (hover:hover){#ma-main .ma-coda-sound:not(:disabled):hover{color:var(--ink)}}
+#ma-main .ma-coda-sound:disabled{cursor:default;opacity:.5}
+@media (forced-colors:active){.ma-coda-furin{stroke:ButtonText}}
+@media (prefers-reduced-motion:reduce){#ma-main .ma-coda-sound,.ma-coda-furin-strip{transition:none}}
+/* The hint under the bell: the edition handwriting, small, right-aligned to the line's end.
+ * It rises in as the section arrives (.9s, the house out-curve) and leaves faster (.5s). */
+#ma-main .ma-coda-hint{
+  position:absolute;right:0;top:calc(var(--coda-mark) * .114 + var(--furin-h) + 12px);
+  margin:0;max-width:none;white-space:nowrap;text-align:right;pointer-events:none;
+  font:400 19px/1.35 var(--font-reading);letter-spacing:0;color:var(--ink-dim);
+  opacity:0;transform:translateY(6px);visibility:hidden;
+  transition:opacity .5s cubic-bezier(.7,0,.16,1),transform .5s cubic-bezier(.7,0,.16,1),visibility 0s linear .5s;
+}
+#ma-main .ma-coda-hint[hidden]{display:none}
+#ma-main .ma-coda-hint.is-shown{
+  opacity:1;transform:none;visibility:visible;
+  transition:opacity .9s cubic-bezier(.3,.9,.1,1),transform .9s cubic-bezier(.3,.9,.1,1),visibility 0s;
+}
+/* On phones it sets as two short lines beside 間: "the bell turns / the sound off". */
+@media (max-width:899px){#ma-main .ma-coda-hint{font-size:16px;line-height:1.3}#ma-main .ma-coda-hint span{display:block}}
+@media (max-width:360px){#ma-main .ma-coda-hint{font-size:15px}}
+@media (prefers-reduced-motion:reduce){#ma-main .ma-coda-hint,#ma-main .ma-coda-hint.is-shown{transform:none;transition:none}}
