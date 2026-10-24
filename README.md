@@ -60,4 +60,5 @@ This writes `dist/ma.html`, the same page with every stylesheet, script, image a
   - Noto Serif JP
   - Waiting for the Sunrise
 - **The coda's gesture.** It is after Annnimate's Elastic Divider: the gesture only, with code of our own.
-- **Everything else.** The page, its images, its words and its code are XI's. No licence is granted for them.
+- **The code** (HTML, CSS, JavaScript and `build.py`) is under the MIT License: see `LICENSE`. Use it as a template, change it, ship it.
+- **The images and the words** stay XI's and are not covered by that licence: replace them with your own.
